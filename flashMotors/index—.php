@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
 </head>
 
@@ -16,61 +18,57 @@
     <div class="top-bar">
         <img src="img/logo.png" alt="">
     </div>
-    <div class="steps">
-        <ul v-if="$route.name=='home' || !$route.params.id">
-            <li>
-                <router-link :to="{name: 'home'}" class="home">☰</router-link>
-            </li>
-            <!-- <li v-if="$route.name=='home'"><a>ՏՍԿ Կարգագիր</a></li> -->
-            <li v-else>
-                <router-link :to="{name: 'order'}">ՏՍԿ Կարգագիր</router-link>
-            </li>
-            <li><a>ՏՍԿ Պահեստ</a></li>
-            <li><a>Խանութ</a></li>
-            <li><a>Մատակարար</a></li>
-            <li><a>Գնումներ</a></li>
-            <li><a>Արհեստավոր</a></li>
-            <li><a>Դրամարկղ</a></li>
-            <li><a>Հաշվետվություն</a></li>
-        </ul>
-        <!-- <ul v-else>
-            <li>
-                <router-link :to="{name: 'home'}" class="home">☰</router-link>
-            </li>
-            <li>
-                <router-link :to="{name: 'view-order', params: {id: $route.params.id}}">ՏՍԿ Կարգագիր</router-link>
-            </li>
-            <li>
-                <router-link :to="{name: 'storage', params: {id: $route.params.id}}">ՏՍԿ Պահեստ</router-link>
-            </li>
-            <li>
-                <router-link :to="{name: 'shop', params: {id: $route.params.id}}">Խանութ</router-link>
-            </li>
-            <li>
-                <router-link :to="{name: 'delivery', params: {id: $route.params.id}}">Մատակարար</router-link>
-            </li>
-            <li>
-                <router-link :to="{name: 'buying', params: {id: $route.params.id}}">Գնումներ</router-link>
-            </li>
-            <li>
-                <router-link :to="{name: 'master', params: {id: $route.params.id}}">Արհեստավոր</router-link>
-            </li>
-            <li>
-                <router-link :to="{name: 'cash-box', params: {id: $route.params.id}}">Դրամարկղ</router-link>
-            </li>
-            <li>
-                <router-link :to="{name: 'report', params: {id: $route.params.id}}">Հաշվետվություն</router-link>
-            </li>
-        </ul> -->
-        <div v-if="$route.name=='home'">
-            <router-link :to="{name: 'order'}">
-                <button class="button">Ստեղծել պատվեր</button>
-            </router-link>
+    <nav>
+        <div class="nav nav-tabs navMain" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active " id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">☰</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-view-order" role="tab" aria-controls="nav-view-order" aria-selected="false">ՏՍԿ Կարգագիր</a>
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-storage" role="tab" aria-controls="nav-storage" aria-selected="false">ՏՍԿ Պահեստ</a>
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-shop" role="tab" aria-controls="nav-shop" aria-selected="false">Խանութ</a>
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-delivery" role="tab" aria-controls="nav-delivery" aria-selected="false">Մատակարար</a>
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-buying" role="tab" aria-controls="nav-buying" aria-selected="false">Գնումներ</a>
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-master" role="tab" aria-controls="nav-master" aria-selected="false">Արհեստավոր</a>
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-cash-box" role="tab" aria-controls="nav-cash-box" aria-selected="false">Դրամարկղ</a>
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-report" role="tab" aria-controls="nav-report" aria-selected="false">Հաշվետվություն</a>
         </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">home</div>
+        <div class="tab-pane fade" id="nav-view-order" role="tabpanel" aria-labelledby="nav-profile-tab"><?php require_once('./forms/form1.php') ?></div>
+        <div class="tab-pane fade" id="nav-storage" role="tabpanel" aria-labelledby="nav-contact-tab">storage</div>
+        <div class="tab-pane fade" id="nav-shop" role="tabpanel" aria-labelledby="nav-contact-tab">shop</div>
+        <div class="tab-pane fade" id="nav-delivery" role="tabpanel" aria-labelledby="nav-contact-tab">delivery</div>
+        <div class="tab-pane fade" id="nav-buying" role="tabpanel" aria-labelledby="nav-contact-tab">buying</div>
+        <div class="tab-pane fade" id="nav-master" role="tabpanel" aria-labelledby="nav-contact-tab">master</div>
+        <div class="tab-pane fade" id="nav-cash-box" role="tabpanel" aria-labelledby="nav-contact-tab">cash-box</div>
+        <div class="tab-pane fade" id="nav-report" role="tabpanel" aria-labelledby="nav-contact-tab">report</div>
     </div>
-    <?php require_once('./forms/form1.php') ?>
+
 </body>
 <style>
+    .nav-tabs .nav-link.active {
+        color: #7A1878;
+        background-color: #fff;
+        border-color: #7A1878 #7A1878 #fff;
+    }
+
+    .nav-tabs {
+        border-bottom: 1px solid #7A1878;
+    }
+
+    a {
+        color: #000;
+    }
+
+    a:hover {
+
+        color: #7A1878;
+    }
+
+    .navMain {
+        margin-top: 15px;
+        justify-content: space-evenly;
+    }
+
     .top-bar {
         height: 40px;
         background: #000;
@@ -132,6 +130,7 @@
         width: 200px;
     }
 </style>
+
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P" crossorigin="anonymous"></script>

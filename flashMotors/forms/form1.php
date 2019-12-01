@@ -1,225 +1,572 @@
 <?php
+$array = ['alfa', 'beta'];
+$array2 = ['alfaSadist', 'betaSadist'];
 
 ?>
+
 <div class="order">
-    <div class="container is-fluid">
-        <div class="row">
-            <div class="col col-4">
-                <input type="text" v-model="order.name" class="form-input" placeholder="Անուն Ազգանուն" />
-            </div>
-            <div class="col col-2">
-                <div class="group-input">
-                    <div class="icon-phone"></div>
-                    <input type="text" v-model="order.phone" class="form-input" placeholder="Հեռախոս" />
+
+    <div class="container-fluid">
+        <div class='physClient my-2 col-2'> Ֆիզիկական անձ</div>
+        <div class='physInfo'>
+            <div class="row my-3">
+                <div class="col col-2"><input type="text" placeholder="Անուն Ազգանուն" class="form-input"></div>
+                <div class="col col-2">
+                    <div class="group-input">
+                        <div class="icon-phone"></div><input type="text" placeholder="Անձնագիր/ՆՔ" class="form-input">
+                    </div>
                 </div>
-            </div>
-            <div class="col col-2">
-                <div class="group-input">
-                    <div class="icon-email"></div>
-                    <input type="text" v-model="order.email" class="form-input" placeholder="Էլ․ Փոստ" />
+                <div class="col col-2">
+                    <div class="group-input">
+                        <div class="icon-phone"></div><input type="text" placeholder="Սոց քարտ" class="form-input">
+                    </div>
                 </div>
-            </div>
-            <div class="col col-2">
-                <div class="group-input">
-                    <div class="icon-calendar"></div>
-                    <flat-pickr v-model="order.apply_date" class="form-input" placeholder="Դիմելու ամսաթիվ"></flat-pickr>
+                <div class="col col-2">
+                    <div class="group-input">
+                        <div class="icon-phone"></div><input type="text" placeholder="Հասցե" class="form-input">
+                    </div>
                 </div>
-            </div>
-            <div class="col col-2">
-                <select v-model="order.status" class="form-input">
-                    <option value disabled>Կարգավիճակ</option>
+                <div class="col col-2">
+                    <div class="group-input">
+                        <div class="icon-phone"></div><input type="text" placeholder="Հեռախոս" class="form-input">
+                    </div>
+                </div>
+                <div class="col col-2">
+                    <div class="group-input">
+                        <div class="icon-email"></div><input type="text" placeholder="Էլ․ Փոստ" class="form-input">
+                    </div>
+                </div>
+
+                <!-- <div class="col col-2"><select class="form-input">
+                    <option value="" disabled="disabled">Կարգավիճակ</option>
                     <option value="delivery">Առաքում</option>
                     <option value="waiting">Սպասում</option>
-                </select>
+                </select></div> -->
             </div>
-        </div>
-        <div class="row">
-            <div class="col col-2">
-                <dropdown @select="select" v-model="order.brand" :items="brands" :placeholder="'Մեքենայի մակնիշ'"></dropdown>
-            </div>
-            <div class="col col-2">
-                <dropdown @select="select" v-model="order.model" :items="models" :placeholder="'Մոդել'"></dropdown>
-            </div>
-            <div class="col col-1">
-                <div class="group-input">
-                    <div class="icon-calendar"></div>
-                    <select v-model="order.year">
-                        <option value v-for="(year, key) in years" :key="key">{{year}}</option>
-                    </select>
+            <div class="row">
+                <div class="col col-2">
+                    <div class="suggestion">
+                        <div><input class="form-input" placeholder='Մեքենաի Մոդել' />
+                            <!---->
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col col-1">
-                <input type="text" v-model="order.vin" class="form-input" placeholder="VIN" />
-            </div>
-            <div class="col col-2">
-                <input type="text" v-model="order.plate_number" class="form-input" placeholder="Պետ․ համարանիշ" />
-            </div>
-            <div class="col col-2">
-                <button class="button">
-                    Ներբեռնել
-                    <span class="icon-download"></span>
-                </button>
-            </div>
-            <div class="col col-2">
-                <div class="group-input">
-                    <div class="icon-calendar"></div>
-                    <flat-pickr v-model="order.last_visit" class="form-input" placeholder="Հաջորդ այց"></flat-pickr>
+                <div class="col col-2">
+                    <div class="suggestion"><input type="text" placeholder="Պետ համարանիշ" class="form-input"></div>
                 </div>
+                <div class="col col-1">
+                    <div class="group-input">
+                        <div class="icon-calendar"></div>
+
+                        <select class='form-control'>
+                            <option value="" checked='true' disabled> Տարեթիվ</option>
+                            <option value="2019">2019</option>
+                            <option value="2018">2018</option>
+                            <option value="2017">2017</option>
+                            <option value="2016">2016</option>
+                            <option value="2015">2015</option>
+                            <option value="2014">2014</option>
+                            <option value="2013">2013</option>
+                            <option value="2012">2012</option>
+                            <option value="2011">2011</option>
+                            <option value="2010">2010</option>
+                            <option value="2009">2009</option>
+                            <option value="2008">2008</option>
+                            <option value="2007">2007</option>
+                            <option value="2006">2006</option>
+                            <option value="2005">2005</option>
+                            <option value="2004">2004</option>
+                            <option value="2003">2003</option>
+                            <option value="2002">2002</option>
+                            <option value="2001">2001</option>
+                            <option value="2000">2000</option>
+                            <option value="1999">1999</option>
+                            <option value="1998">1998</option>
+                            <option value="1997">1997</option>
+                            <option value="1996">1996</option>
+                            <option value="1995">1995</option>
+                            <option value="1994">1994</option>
+                            <option value="1993">1993</option>
+                            <option value="1992">1992</option>
+                            <option value="1991">1991</option>
+                            <option value="1990">1990</option>
+                            <option value="1989">1989</option>
+                            <option value="1988">1988</option>
+                            <option value="1987">1987</option>
+                            <option value="1986">1986</option>
+                            <option value="1985">1985</option>
+                            <option value="1984">1984</option>
+                            <option value="1983">1983</option>
+                            <option value="1982">1982</option>
+                            <option value="1981">1981</option>
+                            <option value="1980">1980</option>
+                            <option value="1979">1979</option>
+                            <option value="1978">1978</option>
+                            <option value="1977">1977</option>
+                            <option value="1976">1976</option>
+                            <option value="1975">1975</option>
+                            <option value="1974">1974</option>
+                            <option value="1973">1973</option>
+                            <option value="1972">1972</option>
+                            <option value="1971">1971</option>
+                            <option value="1970">1970</option>
+                            <option value="1969">1969</option>
+                            <option value="1968">1968</option>
+                            <option value="1967">1967</option>
+                            <option value="1966">1966</option>
+                            <option value="1965">1965</option>
+                            <option value="1964">1964</option>
+                            <option value="1963">1963</option>
+                            <option value="1962">1962</option>
+                            <option value="1961">1961</option>
+                            <option value="1960">1960</option>
+                            <option value="1959">1959</option>
+                            <option value="1958">1958</option>
+                            <option value="1957">1957</option>
+                            <option value="1956">1956</option>
+                            <option value="1955">1955</option>
+                            <option value="1954">1954</option>
+                            <option value="1953">1953</option>
+                            <option value="1952">1952</option>
+                            <option value="1951">1951</option>
+                            <option value="1950">1950</option>
+                            <option value="1949">1949</option>
+                            <option value="1948">1948</option>
+                            <option value="1947">1947</option>
+                            <option value="1946">1946</option>
+                            <option value="1945">1945</option>
+                            <option value="1944">1944</option>
+                            <option value="1943">1943</option>
+                            <option value="1942">1942</option>
+                            <option value="1941">1941</option>
+                            <option value="1940">1940</option>
+                            <option value="1939">1939</option>
+                            <option value="1938">1938</option>
+                            <option value="1937">1937</option>
+                            <option value="1936">1936</option>
+                            <option value="1935">1935</option>
+                            <option value="1934">1934</option>
+                            <option value="1933">1933</option>
+                            <option value="1932">1932</option>
+                            <option value="1931">1931</option>
+                            <option value="1930">1930</option>
+                            <option value="1929">1929</option>
+                            <option value="1928">1928</option>
+                            <option value="1927">1927</option>
+                            <option value="1926">1926</option>
+                            <option value="1925">1925</option>
+                            <option value="1924">1924</option>
+                            <option value="1923">1923</option>
+                            <option value="1922">1922</option>
+                            <option value="1921">1921</option>
+                            <option value="1920">1920</option>
+                            <option value="1919">1919</option>
+                            <option value="1918">1918</option>
+                            <option value="1917">1917</option>
+                            <option value="1916">1916</option>
+                            <option value="1915">1915</option>
+                            <option value="1914">1914</option>
+                            <option value="1913">1913</option>
+                            <option value="1912">1912</option>
+                            <option value="1911">1911</option>
+                            <option value="1910">1910</option>
+                            <option value="1909">1909</option>
+                            <option value="1908">1908</option>
+                            <option value="1907">1907</option>
+                            <option value="1906">1906</option>
+                            <option value="1905">1905</option>
+                            <option value="1904">1904</option>
+                            <option value="1903">1903</option>
+                            <option value="1902">1902</option>
+                            <option value="1901">1901</option>
+                            <option value="1900">1900</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col col-2"><input type="text" placeholder="Վազք" class="form-input form-control"></div>
+                <div class="col col-2"><input type="text" placeholder="VIN" class="form-input form-control"></div>
+            </div>
+            <div class="row my-3">
+
+
+                <div class="col col-2">
+                    <div class="group-input">
+                        <div class="icon-calendar"></div><input type="text" data-input="true" placeholder="Դիմելու ամսաթիվ" class="form-input flatpickr-input" readonly="readonly">
+                    </div>
+                </div>
+                <div class="col col-2">
+                    <div class="group-input">
+                        <div class="icon-calendar"></div><input type="text" data-input="true" placeholder="Հաջորդ այցելություն" class="form-input flatpickr-input" readonly="readonly">
+                    </div>
+                </div>
+                <div class="col col-2"><input type="text" placeholder="Պլանային Վազք" class="form-input"></div>
+                <div class="col col-2"><button class="btn upload form-control"> Ներբեռնել <span class="icon-download"></span></button></div>
+                <div class="col col-2"><button class="btn edit form-control"> Խմբագրել <span class="icon-download"></span></button></div>
             </div>
         </div>
     </div>
+    <div class="container-fluid">
+        <div class='legalClient my-2 col-2'> Իրավաբանական անձ</div>
+        <div class='legalInfo'>
+            <div class="row my-3">
+                <div class="col col-2"><input type="text" placeholder="Գործընկեր" class="form-input"></div>
+                <div class="col col-1">
+                    <div class="group-input">
+                        <div class="icon-phone"></div><input type="text" placeholder="ՀՎՀՀ" class="form-input">
+                    </div>
+                </div>
+                <div class="col col-2">
+                    <div class="group-input">
+                        <div class="icon-phone"></div><input type="text" placeholder="Բանկ, հ/հ" class="form-input">
+                    </div>
+                </div>
+                <div class="col col-2">
+                    <div class="group-input">
+                        <div class="icon-phone"></div><input type="text" placeholder="Իրավաբանական հասցե" class="form-input">
+                    </div>
+                </div>
+                <div class="col col-2">
+                    <div class="group-input">
+                        <div class="icon-phone"></div><input type="text" placeholder="Գործունեության հասցե" class="form-input">
+                    </div>
+                </div>
+                <div class="col col-1">
+                    <div class="group-input">
+                        <div class="icon-phone"></div><input type="text" placeholder="Հեռախոս" class="form-input">
+                    </div>
+                </div>
+                <div class="col col-2">
+                    <div class="group-input">
+                        <div class="icon-email"></div><input type="text" placeholder="Էլ․ Փոստ" class="form-input">
+                    </div>
+                </div>
 
-    <div class="products-and-services">
-        <div class="container is-fluid heading">
-            <div class="row c-nb">
-                <div class="col-9">
-                    <div>Ապրանքների և ծառայությունների մատյան</div>
+                <!-- <div class="col col-2"><select class="form-input">
+                    <option value="" disabled="disabled">Կարգավիճակ</option>
+                    <option value="delivery">Առաքում</option>
+                    <option value="waiting">Սպասում</option>
+                </select></div> -->
+            </div>
+            <div class="row">
+                <div class="col col-2">
+                    <div class="suggestion">
+                        <div><input class="form-input" placeholder='Մեքենաի Մոդել' />
+                            <!---->
+                        </div>
+                    </div>
                 </div>
-                <div class="col-3 logs" :class="{active: show_logs}">
-                    <span @click="show_logs=!show_logs">Կարգագրի փոփոխությունների մատյան</span>
-                    <div class="log-list"></div>
+                <div class="col col-2">
+                    <div class="suggestion"><input type="text" placeholder="Պետ համարանիշ" class="form-input"></div>
                 </div>
+                <div class="col col-1">
+                    <div class="group-input">
+                        <div class="icon-calendar"></div>
+
+                        <select class='form-control'>
+                            <option value="" checked='true' disabled> Տարեթիվ</option>
+                            <option value="2019">2019</option>
+                            <option value="2018">2018</option>
+                            <option value="2017">2017</option>
+                            <option value="2016">2016</option>
+                            <option value="2015">2015</option>
+                            <option value="2014">2014</option>
+                            <option value="2013">2013</option>
+                            <option value="2012">2012</option>
+                            <option value="2011">2011</option>
+                            <option value="2010">2010</option>
+                            <option value="2009">2009</option>
+                            <option value="2008">2008</option>
+                            <option value="2007">2007</option>
+                            <option value="2006">2006</option>
+                            <option value="2005">2005</option>
+                            <option value="2004">2004</option>
+                            <option value="2003">2003</option>
+                            <option value="2002">2002</option>
+                            <option value="2001">2001</option>
+                            <option value="2000">2000</option>
+                            <option value="1999">1999</option>
+                            <option value="1998">1998</option>
+                            <option value="1997">1997</option>
+                            <option value="1996">1996</option>
+                            <option value="1995">1995</option>
+                            <option value="1994">1994</option>
+                            <option value="1993">1993</option>
+                            <option value="1992">1992</option>
+                            <option value="1991">1991</option>
+                            <option value="1990">1990</option>
+                            <option value="1989">1989</option>
+                            <option value="1988">1988</option>
+                            <option value="1987">1987</option>
+                            <option value="1986">1986</option>
+                            <option value="1985">1985</option>
+                            <option value="1984">1984</option>
+                            <option value="1983">1983</option>
+                            <option value="1982">1982</option>
+                            <option value="1981">1981</option>
+                            <option value="1980">1980</option>
+                            <option value="1979">1979</option>
+                            <option value="1978">1978</option>
+                            <option value="1977">1977</option>
+                            <option value="1976">1976</option>
+                            <option value="1975">1975</option>
+                            <option value="1974">1974</option>
+                            <option value="1973">1973</option>
+                            <option value="1972">1972</option>
+                            <option value="1971">1971</option>
+                            <option value="1970">1970</option>
+                            <option value="1969">1969</option>
+                            <option value="1968">1968</option>
+                            <option value="1967">1967</option>
+                            <option value="1966">1966</option>
+                            <option value="1965">1965</option>
+                            <option value="1964">1964</option>
+                            <option value="1963">1963</option>
+                            <option value="1962">1962</option>
+                            <option value="1961">1961</option>
+                            <option value="1960">1960</option>
+                            <option value="1959">1959</option>
+                            <option value="1958">1958</option>
+                            <option value="1957">1957</option>
+                            <option value="1956">1956</option>
+                            <option value="1955">1955</option>
+                            <option value="1954">1954</option>
+                            <option value="1953">1953</option>
+                            <option value="1952">1952</option>
+                            <option value="1951">1951</option>
+                            <option value="1950">1950</option>
+                            <option value="1949">1949</option>
+                            <option value="1948">1948</option>
+                            <option value="1947">1947</option>
+                            <option value="1946">1946</option>
+                            <option value="1945">1945</option>
+                            <option value="1944">1944</option>
+                            <option value="1943">1943</option>
+                            <option value="1942">1942</option>
+                            <option value="1941">1941</option>
+                            <option value="1940">1940</option>
+                            <option value="1939">1939</option>
+                            <option value="1938">1938</option>
+                            <option value="1937">1937</option>
+                            <option value="1936">1936</option>
+                            <option value="1935">1935</option>
+                            <option value="1934">1934</option>
+                            <option value="1933">1933</option>
+                            <option value="1932">1932</option>
+                            <option value="1931">1931</option>
+                            <option value="1930">1930</option>
+                            <option value="1929">1929</option>
+                            <option value="1928">1928</option>
+                            <option value="1927">1927</option>
+                            <option value="1926">1926</option>
+                            <option value="1925">1925</option>
+                            <option value="1924">1924</option>
+                            <option value="1923">1923</option>
+                            <option value="1922">1922</option>
+                            <option value="1921">1921</option>
+                            <option value="1920">1920</option>
+                            <option value="1919">1919</option>
+                            <option value="1918">1918</option>
+                            <option value="1917">1917</option>
+                            <option value="1916">1916</option>
+                            <option value="1915">1915</option>
+                            <option value="1914">1914</option>
+                            <option value="1913">1913</option>
+                            <option value="1912">1912</option>
+                            <option value="1911">1911</option>
+                            <option value="1910">1910</option>
+                            <option value="1909">1909</option>
+                            <option value="1908">1908</option>
+                            <option value="1907">1907</option>
+                            <option value="1906">1906</option>
+                            <option value="1905">1905</option>
+                            <option value="1904">1904</option>
+                            <option value="1903">1903</option>
+                            <option value="1902">1902</option>
+                            <option value="1901">1901</option>
+                            <option value="1900">1900</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col col-2"><input type="text" placeholder="Վազք" class="form-input form-control"></div>
+                <div class="col col-2"><input type="text" placeholder="VIN" class="form-input form-control"></div>
+            </div>
+            <div class="row my-3">
+
+
+                <div class="col col-2">
+                    <div class="group-input">
+                        <div class="icon-calendar"></div><input type="text" data-input="true" placeholder="Դիմելու ամսաթիվ" class="form-input flatpickr-input" readonly="readonly">
+                    </div>
+                </div>
+                <div class="col col-2">
+                    <div class="group-input">
+                        <div class="icon-calendar"></div><input type="text" data-input="true" placeholder="Հաջորդ այցելություն" class="form-input flatpickr-input" readonly="readonly">
+                    </div>
+                </div>
+                <div class="col col-2"><input type="text" placeholder="Պլանային Վազք" class="form-input"></div>
+                <div class="col col-2"><button class="btn upload form-control"> Ներբեռնել <span class="icon-download"></span></button></div>
+                <div class="col col-2"><button class="btn edit form-control"> Խմբագրել <span class="icon-download"></span></button></div>
             </div>
         </div>
-
-        <div class="container is-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="options-list">
-                        <div class="section-title">
-                            Ծառայություններ
-                            <span class="icon-plus" @click="addService()"></span>
-                        </div>
-                        <div class="row list-item" v-for="(item, key) in order.services" :key="key">
-                            <div class="col-2">
-                                <dropdown @select="select" v-model="item.service" :items="our_services" :placeholder="'Ծառայություն'"></dropdown>
-                            </div>
-                            <div class="col-1">
-                                <div class="group-input">
-                                    <div>
-                                        <span>Քանակ</span>
-                                    </div>
-                                    <input type="number" min="0" v-model="item.qty" class="form-input" />
-                                </div>
-                            </div>
-                            <div class="col-1">
-                                <div class="group-input">
-                                    <div>
-                                        <span>Գին</span>
-                                    </div>
-                                    <input type="text" v-model="item.service.category_1" readonly class="form-input" placeholder="Գին" />
-                                </div>
-                            </div>
-                            <div class="col-1">
-                                <div class="group-input">
-                                    <div>
-                                        <span>Գին</span>
-                                    </div>
-                                    <input type="text" :value="item.service.category_1*item.qty*item.qty||0" readonly class="form-input" placeholder="Ընդ․" />
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <select class="form-input" v-model="item.domkrat">
-                                    <option value disabled>Դոմկրատ</option>
-                                    <option :value="item.value" v-for="(item, key) in domkrats" :key="key">{{item.name}}</option>
-                                </select>
-                            </div>
-                            <div class="col-2">
-                                <div class="group-input">
-                                    <div class="icon-calendar"></div>
-                                    <flat-pickr v-model="order.start_date" class="form-input" placeholder="Ամսաթիվ"></flat-pickr>
-                                </div>
-                            </div>
-                            <div class="col-1">
-                                <select v-model="item.status" class="form-input">
-                                    <option value>Կատարում</option>
-                                    <option value>Սպասում</option>
-                                </select>
-                            </div>
-                            <div class="col-1 tc-ns">
-                                <ul class="row-actions">
-                                    <li>
-                                        <span class="icon-delete" @click="removeService(key)"></span>
-                                    </li>
-                                    <li>
-                                        <span class="item-status"></span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="options-list">
-                        <div class="section-title">
-                            Ապրանքներ
-                            <span class="icon-plus" @click="addProduct()"></span>
-                        </div>
-                        <div class="row" v-for="(item, key) in order.products" :key="key">
-                            <div class="col-2">
-                                <dropdown @select="select" v-model="item.product" :items="our_products" :placeholder="'Ապրանք'"></dropdown>
-                            </div>
-                            <div class="col-2">
-                                <div class="group-input">
-                                    <div>
-                                        <span>Քանակ</span>
-                                    </div>
-                                    <input type="number" min="0" v-model="item.qty" class="form-input" />
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="group-input">
-                                    <div>
-                                        <span>Գին</span>
-                                    </div>
-                                    <input type="text" v-model="item.product.category_1" readonly class="form-input" />
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="group-input">
-                                    <div>
-                                        <span>Ընդ․</span>
-                                    </div>
-                                    <input type="text" readonly :value="item.product.category_1*item.qty||0" class="form-input" placeholder="Ընդ․" />
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <select class="form-input" name id>
-                                    <option value>Առկա է</option>
-                                    <option value>Խանութ</option>
-                                    <option value>Մատակարար</option>
-                                    <option value>Գնումներ</option>
-                                    <option value>Դրամարկղ</option>
-                                </select>
-                            </div>
-                            <div class="col-1">
-                                <ul class="radio-status">
-                                    <li class="error"></li>
-                                    <li class="error"></li>
-                                    <li class="success"></li>
-                                    <li class="wrong"></li>
-                                </ul>
-                            </div>
-                            <div class="col-1 tc-ns">
-                                <ul class="row-actions">
-                                    <li>
-                                        <span class="icon-delete" @click="removeProduct(key)"></span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="buttons">
-                        <button type="button" class="button" @click="saveOrder()">Պահպանել</button>
-                    </div>
-                </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row c-nb">
+            <div class="col-7 backPurple">
+                <div>Ապրանքների և ծառայությունների մատյան</div>
             </div>
+            <div class="col-3 logs backBlack"><span>Փոփոխությունների մատյան</span>
+                <div class="log-list"></div>
+            </div>
+            <div class="col-2 logs backBlack"><span>Կից ֆայլեր </span>
+                <div class="log-list"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <label class='col-2  my-2' for="selectPriceType"> Գնացուցակի տեսակ </label>
+            <select class='col-2 backBlack ml-2 my-2' name="selectPriceType" id="selectPriceType">
+                <option value="Մեծածախ">Մեծածախ</option>
+                <option value="Մանրածապ">Մանրածախ</option>
+            </select>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <label class='col-2  my-1' for="selectHarkType"> ԱԱՀ-ի հաշվարկի ձև </label>
+            <select class='col-2 backBlack ml-2 my-1' name="selectHarkType" id="selectHarkType">
+                <option value="ԱԱՀ -20%">ԱԱՀ -20%</option>
+                <option value="ԱԱՀ -ն այդ թվում">ԱԱՀ -ն այդ թվում</option>
+                <option value="0-ական ԱԱՀ">0-ական ԱԱՀ</option>
+                <option value="Առանց ԱԱՀ">Առանց ԱԱՀ</option>
+            </select>
+        </div>
+    </div>
+    <div class="container-fluid my-3">
+        <div class="row">
+            <label class='col-2  my-1' for="selectHarkType"> Ծառայություններ </label>
+            <button class='btn btnRound addService'>+</button>
+        </div>
+        <div class="row services">
+
+        </div>
+    </div>
+    <div class="container-fluid my-3">
+        <div class="row">
+            <label class='col-2  my-1' for="selectHarkType"> Ապրանքներ </label>
+            <button class='btn btnRound addProduct'>+</button>
+        </div>
+        <div class="row products">
+
         </div>
     </div>
 </div>
 
-<style lang="scss">
+<style>
+    .btnRoundDelete {
+        border-radius: 50%;
+        background: #101010;
+        color: #fff;
+        transition: 0.4s;
+    }
+
+    .btnRoundDelete:hover {
+        background: #a80181;
+        color: #fff;
+        transition: 0.4s;
+    }
+
+    .btnRound {
+        border-radius: 50%;
+        background: #a80181;
+        color: #fff;
+        transition: 0.4s;
+    }
+
+    .btnRound:hover {
+        background: #101010;
+        color: #fff;
+        transition: 0.4s;
+    }
+
+    select {
+        border: none;
+        border-radius: 5px;
+    }
+
+    .backBlack {
+        background: #101010;
+        color: #fff;
+    }
+
+    .backPurple {
+        background: #a80181;
+        color: #fff;
+    }
+
+    .legalClient {
+        background: #a80181;
+        color: #fff;
+    }
+
+    .physClient {
+        background: #a80181;
+        color: #fff;
+    }
+
+    .legalInfo {
+        display: none;
+        transition: 2s;
+    }
+
+    .physInfo {
+        display: none;
+        transition: 2s;
+    }
+
+    .edit {
+        border: 0;
+        border-radius: 4px;
+        background: rgb(10, 10, 10);
+        color: #fff;
+        width: 100%;
+        outline: none;
+        cursor: pointer;
+    }
+
+    .upload {
+        border: 0;
+        border-radius: 4px;
+        background: #a80181;
+        color: #fff;
+        width: 100%;
+        outline: none;
+        cursor: pointer;
+    }
+
+    .edit:hover {
+        color: #fff;
+    }
+
+    .upload:hover {
+        color: #fff;
+    }
+
+    .form-input {
+        width: 100%;
+        height: 30px;
+        border-radius: 4px;
+        border: 1px solid #a5a5a5;
+        padding: 0 15px;
+        outline: none;
+    }
+
     .products-and-services {
         margin-top: 30px;
+    }
+
+    .is-fluid {
+        width: 100vw;
     }
 
     .products-and-services .heading {
@@ -259,3 +606,51 @@
         color: #fff;
     }
 </style>
+
+<script>
+    $('.legalClient').click(function() {
+        $('.legalInfo').toggle();
+    });
+    $('.physClient').click(function() {
+        $('.physInfo').toggle();
+    });
+
+    $('.addService').click(function() {
+        var service = '<div class="service col-12" style="display:flex;"><div class="col col-2"><select id="serviceSelect" class="form-input"><option value="">Ընտրել</option><?php foreach ($array as $key => $value) {
+                                                                                                                                                                                    echo "<option value=$value> $value</option>";
+                                                                                                                                                                                } ?></select></div> <div class="col col-2"><input type="number" class="form-input" id="serviceQty" placeholder="Քանակ"/></div>' +
+            'Գին :<div class="col col-2"><input type="number" class="form-input" id="serviceQty" placeholder="Գին" readonly="true"/></div>' +
+            'Գումար :<div class="col col-2"><input type="number" class="form-input" id="serviceTotalPrice" placeholder="Գումար" readonly="true"/></div>' +
+            'Արհեստավոր :<div class="col col-2"><select class="form-input" id="serviceWorkerSelect"><option value="">Ընտրել</option><?php foreach ($array2 as $key => $value) {
+                                                                                                                                        echo "<option value=$value> $value</option>";
+                                                                                                                                    } ?></select></div>' +
+            '<span id="deleteService" class="btn btnRoundDelete"> X </span> </div>';
+        $('.services').append(service)
+    })
+    $('.addProduct').click(function() {
+        var product = '<div class="product col-12" style="display:flex;"><div class="col col-2"><select id="productSelect" class="form-input"><option value="">Ընտրել</option><?php foreach ($array as $key => $value) {
+                                                                                                                                                                                    echo "<option value=$value> $value</option>";
+                                                                                                                                                                                } ?></select></div> <div class="col col-2"><input type="number" class="form-input" id="productQty" placeholder="Քանակ"/></div>' +
+            'Գին :<div class="col col-2"><input type="number" class="form-input" id="productQty" placeholder="Գին" readonly="true"/></div>' +
+            'Գումար :<div class="col col-2"><input type="number" class="form-input" id="productTotalPrice" placeholder="Գումար" readonly="true"/></div>' +
+            'Արհեստավոր :<div class="col col-2"><select class="form-input" id="productWorkerSelect"><option value="">Ընտրել</option><?php foreach ($array2 as $key => $value) {
+                                                                                                                                        echo "<option value=$value> $value</option>";
+                                                                                                                                    } ?></select></div>' +
+            '<span id="deleteProduct" class="btn btnRoundDelete"> X </span></div>';
+        $('.products').append(product)
+    })
+    $('span#deleteService').click(function() {
+        // $(this).parent().remove();
+        alert('apeeeeeeeeee');
+    })
+    $('span#deleteProduct').click(function() {
+        // $(this).parent().remove();
+        alert('apeeeeeeeeee');
+    })
+    $('body').on('click', '#deleteProduct', function() {
+        $(this).parent().remove();
+    })
+    $('body').on('click', '#deleteService', function() {
+        $(this).parent().remove();
+    })
+</script>
